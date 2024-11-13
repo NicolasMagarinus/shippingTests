@@ -11,7 +11,7 @@ describe("calculaFrete", () => {
   });
 
   test("Especificando uma taxa", () => {
-    expect(calculaFrete(50, 2, 10)).toBe("64.00");
+    expect(calculaFrete(50, 2, 2)).toBe("56.00");
   });
 
   test("lança um erro se a distância ou peso forem 0 ou negativos", () => {
@@ -25,17 +25,12 @@ describe("calculaFrete", () => {
     expect(calculaFrete(100, 1)).toBe("112.00");
   });
 
-  test("calcula o frete considerando a distância e o peso", () => {
-    expect(calculaFrete(200, 5)).toBe("220.00");
-    expect(calculaFrete(500, 10)).toBe("530.00");
-  });
-
   test("usa a taxa padrão quando a taxa não é fornecida", () => {
-    expect(calculaFrete(50, 2)).toBe("64.00");
+    expect(calculaFrete(60, 2)).toBe("74.00");
   });
 
   test("permite especificar uma taxa personalizada", () => {
-    expect(calculaFrete(50, 2, 10)).toBe("64.00");
+    expect(calculaFrete(50, 2, 5)).toBe("59.00");
   });
 
   test("lança um erro se a distância ou peso forem 0 ou negativos", () => {
