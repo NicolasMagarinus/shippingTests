@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Frete</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Calculadora de Frete</h2>
+    <form id="freteForm">
+      <label for="distancia">Distância (km):</label>
+      <input type="number" id="distancia" name="distancia" min="1" required>
+
+      <label for="peso">Peso (kg):</label>
+      <input type="number" id="peso" name="peso" min="1" required>
+
+      <label for="taxa">Taxa (R$ - Opcional):</label>
+      <input type="number" id="taxa" name="taxa" placeholder="R$ 10.00">
+
+      <button type="button" onclick="calcularFrete()">Calcular Frete</button>
+    </form>
+    
+    <div id="resultado" class="result"></div>
+  </div>
+
+  <script>
+    function calcularFrete() {
+      const distancia = parseFloat(document.getElementById('distancia').value);
+      const peso = parseFloat(document.getElementById('peso').value);
+      const taxa = document.getElementById('taxa').value ? parseFloat(document.getElementById('taxa').value) : 10;
+
+      if (distancia <= 0 || peso <= 0) {
+        document.getElementById('resultado').textContent = "A distancia e o peso devem ser maior que 0";
+        return;
+      }
+
+      const precoKg = 2.00;
+      const precoKm = 1.00;
+      const custoPeso = peso * precoKg;
+      const custoDistancia = distancia * precoKm;
+      const vlFrete = custoPeso + custoDistancia + taxa;
+
+      document.getElementById('resultado').textContent = `O frete é R$ ${vlFrete.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
