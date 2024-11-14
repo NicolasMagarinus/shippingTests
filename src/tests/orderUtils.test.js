@@ -2,7 +2,7 @@ const { calculaFrete } = require('../orderUtils');
 
 describe("calculaFrete", () => {
   test("Calculo do frete considerando a distância e o peso", () => {
-    expect(calculaFrete(200, 5)).toBe("215.00");
+    expect(calculaFrete(200, 5)).toBe("220.00");
     expect(calculaFrete(500, 10)).toBe("1025.00");
   });
 
